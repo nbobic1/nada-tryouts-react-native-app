@@ -31,45 +31,18 @@ MapboxGL.setAccessToken(
 /* $FlowFixMe[missing-local-annot] The type annotation(s) required by Flow's
  * LTI update could not be added via codemod */
 const App = () => {
-  const [coordinates] = useState([78.9629, 20.5937]);
-  const [route, setRoute] = useState({
-    type: 'FeatureCollection',
-    features: [
-      {
-        type: 'Feature',
-        properties: {},
-        geometry: {
-          type: 'LineString',
-          coordinates: [
-            [77.5946, 12.9716],
-            [80.2707, 13.0827],
-          ],
-        },
-      },
-    ],
-  });
-
-  const [polygon, setPolygon] = useState({
-    type: 'Feature',
-    geometry: {
-      type: 'Polygon',
-      coordinates: [
-        [
-          [72.685547, 20.055931],
-          [76.640625, 21.207458],
-          [76.904297, 17.978733],
-          [72.685547, 20.055931],
-        ],
-      ],
-    },
-  });
-
+  const [coordinates] = useState([18.410107299618403, 43.85754735842143]);
+  const [scc] = useState([18.40807197932288, 43.85553119082344]);
+  const [bbi] = useState([18.415763452554405, 43.85876456886843]);
+  const [bolnica] = useState([18.408578829048874, 43.85840524543814]);
   return (
     <View style={styles.page}>
       <View style={styles.container}>
         <MapboxGL.MapView style={styles.map}>
-          <MapboxGL.Camera zoomLevel={4} centerCoordinate={coordinates} />
-          <MapboxGL.PointAnnotation id="prvi_marker" coordinate={coordinates} />
+          <MapboxGL.Camera zoomLevel={11} centerCoordinate={coordinates} />
+          <MapboxGL.PointAnnotation id="scc" coordinate={scc} />
+          <MapboxGL.PointAnnotation id="bolnica" coordinate={bolnica} />
+          <MapboxGL.PointAnnotation id="bbi" coordinate={bbi} />
         </MapboxGL.MapView>
       </View>
     </View>
@@ -108,6 +81,38 @@ const styles = StyleSheet.create({
   },
   icon: {
     paddingTop: 10,
+  },
+  header: {
+    color: '#000',
+    fontFamily: 'Pangolin',
+    fontSize: '24px',
+    fontStyle: 'normal',
+    fontWeight: '400',
+    lineHeight: 'normal',
+  },
+  category: {
+    color: '#000',
+    fontFamily: 'Pangolin',
+    fontSize: '14px',
+    fontStyle: 'normal',
+    fontWeight: '400',
+    lineHeight: 'normal',
+  },
+  description: {
+    color: '#000',
+    fontFamily: 'Pangolin',
+    fontSize: '18px',
+    fontStyle: 'normal',
+    fontWeight: '400',
+    lineHeight: 'normal',
+  },
+  number: {
+    color: '#000',
+    fontFamily: 'Pangolin',
+    fontSize: '14px',
+    fontStyle: 'normal',
+    fontWeight: '400',
+    lineHeight: 'normal',
   },
 });
 export default App;
