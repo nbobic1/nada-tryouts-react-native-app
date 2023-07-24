@@ -10,7 +10,9 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@rnmapbox/maps": "^10.0.11-rc.1",
     "react": "18.1.0",
+    
     "react-native": "0.70.0"
   },
   "devDependencies": {

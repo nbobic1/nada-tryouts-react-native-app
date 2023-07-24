@@ -6,7 +6,7 @@ buildscript {
         minSdkVersion = 21
         compileSdkVersion = 31
         targetSdkVersion = 31
-
+RNMapboxMapsImpl = "mapbox"
         if (System.properties['os.arch'] == "aarch64") {
             // For M1 Users we need to use the NDK 24 which added support for aarch64
             ndkVersion = "24.0.8215888"
@@ -17,6 +17,7 @@ buildscript {
     }
     repositories {
         google()
+        jcenter() 
         mavenCentral()
     }
     dependencies {
@@ -30,6 +31,27 @@ buildscript {
 
 allprojects {
     repositories {
+       
+        
+      /* 
+       configurations.all { 
+      resolutionStrategy { force "com.squareup.okhttp3:okhttp:3.9.1" } } 
+      
+        */
+        maven {
+            url 'https://api.mapbox.com/downloads/v2/releases/maven'
+            authentication {
+                basic(BasicAuthentication)
+            }
+            credentials {
+                // Do not change the username below.
+                // This should always be `mapbox` (not your username).
+                username = 'mapbox'
+                // Use the secret token you stored in gradle.properties as the password
+                password = 'sk.eyJ1IjoibmJvYmljMSIsImEiOiJjbGtneWhwZTMwNmF1M2Vxamdta2pycjc3In0.jGEohkSjIlS-UP08gbLBhA'
+            }
+        }
+
         maven {
             // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
             url("$rootDir/../node_modules/react-native/android")
